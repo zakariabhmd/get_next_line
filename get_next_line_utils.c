@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zbabahmi <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: zbabahmi <zbabahmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/03 18:54:14 by zbabahmi          #+#    #+#             */
-/*   Updated: 2022/12/03 19:31:58 by zbabahmi         ###   ########.fr       */
+/*   Created: 2022/12/03 19:47:17 by zbabahmi          #+#    #+#             */
+/*   Updated: 2022/12/03 19:47:20 by zbabahmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include ""
+#include "get_next_line.h"
 
 size_t	ft_strlen(const char *str)
 {
@@ -60,6 +60,30 @@ char	*ft_strdub(const char *s1)
 	{
 		str[j] = s1[j];
 		j++;
+	}
+	str[j] = '\0';
+	return (str);
+}
+
+char	*ft_substr(char const *s, unsigned int start, size_t len)
+{
+	char	*str;
+	size_t	i;
+	size_t	j;
+
+	i = 0;
+	j = 0;
+	str = (char *)malloc(sizeof(char) * (len + 1));
+	if (!str)
+		return (0);
+	while (s[i])
+	{
+		if ( i >= start && j < len)
+		{
+			str[j] = s[i];
+			j++;
+		}
+		i++;
 	}
 	str[j] = '\0';
 	return (str);
