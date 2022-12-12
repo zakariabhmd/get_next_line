@@ -6,7 +6,7 @@
 /*   By: zbabahmi <zbabahmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 18:38:49 by zbabahmi          #+#    #+#             */
-/*   Updated: 2022/12/11 19:53:24 by zbabahmi         ###   ########.fr       */
+/*   Updated: 2022/12/12 17:19:00 by zbabahmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ char *mkas(char *str1)
         i++;
     if(str1[i] == '\n')
         i++;
-    str = malloc(i + 1);
+    str = malloc(i + 2);
     if(!str)
         return 0;
     j = 0;
@@ -102,7 +102,7 @@ char *mos(char *str1)
         i++;
     if(str1[i] == '\n')
         i++;
-    str = malloc(ft_strlen(str1) - i + 1);
+    str = malloc(ft_strlen(str1) - i + 2);
     if(!str)
         return 0;
     j = 0;
