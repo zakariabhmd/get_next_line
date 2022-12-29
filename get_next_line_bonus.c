@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zbabahmi <zbabahmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/28 02:50:57 by zbabahmi          #+#    #+#             */
-/*   Updated: 2022/12/28 23:03:32 by zbabahmi         ###   ########.fr       */
+/*   Created: 2022/12/29 01:56:14 by zbabahmi          #+#    #+#             */
+/*   Updated: 2022/12/29 01:57:53 by zbabahmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 char	*helper(char *likan, int fd)
 {
@@ -37,24 +37,24 @@ char	*helper(char *likan, int fd)
 
 char	*get_next_line(int fd)
 {
-	static char	*likan;
+	static char	*likan[OPEN_MAX];
 	char		*str;
 	char		*p;
 
 	if (fd < 0 && BUFFER_SIZE <= 0)
 		return (0);
-	likan = helper(likan, fd);
-	p = likan;
-	if (!likan)
+	likan[fd] = helper(likan[fd], fd);
+	p = likan[fd];
+	if (!likan[fd])
 		return (0);
-	if (likan[0] == '\0')
+	if (likan[fd][0] == '\0')
 	{
-		free (likan);
-		likan = 0;
+		free (likan[fd]);
+		likan[fd] = 0;
 		return (0);
 	}
-	str = mkas(likan);
-	likan = mos(likan);
+	str = mkas(likan[fd]);
+	likan[fd] = mos(likan[fd]);
 	free (p);
 	return (str);
 }
